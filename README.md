@@ -1,4 +1,4 @@
-# mynewblog
+# elenet
 
 ## Project setup
 ```

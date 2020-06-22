@@ -1,15 +1,4 @@
 module.exports = {
-    publicPath: './'
-    // devServer: {
-    //     proxy: {
-    //         // proxy all requests starting with /api to jsonplaceholder
-    //         '/api': {
-    //             target: 'http://localhost:2000',
-    //             changeOrigin: true,
-    //             pathRewrite: {
-    //                 '^/api': ''
-    //             }
-    //         }
-    //     }
-    // }
-};
+    // 基本路径
+    publicPath: './' //之前是 baseUrl 从 Vue CLI 3.3 起已弃用，请使用publicPath。
+}
