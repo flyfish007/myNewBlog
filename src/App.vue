@@ -13,6 +13,7 @@
   </div>
 </template>
 <script>
+    import {mapGetters, mapMutations} from "vuex"
     import headItem from "./components/headItem.vue";
     import sideItem from "./components/sideItem.vue";
     import tabsItem from "./components/tabsItem.vue";
@@ -25,7 +26,7 @@
 
         },
         computed: {
-
+            ...mapGetters(["isCollapse"]),
         },
         components: {headItem, sideItem, tabsItem},
         methods: {
@@ -34,6 +35,6 @@
 
     }
 </script>
-<style lang="scss">
-    @import "assets/css/common.scss";
+<style>
+    @import "assets/css/common.css";
 </style>

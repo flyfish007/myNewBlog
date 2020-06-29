@@ -1,19 +1,16 @@
 import axios from 'axios'
-import {getCookie} from './utils';
-import qs from 'qs'
-// let hostName = location.hostname;
-// let baseUrl = ""
-// if (hostName == "localhost") {
-//     baseUrl = "http://sz.test.ztosys.com";
-// } else {
-//     baseUrl = window.location.protocol + hostName
-// }
+
+let hostName = location.hostname;
+let baseUrl = ""
+if (hostName == "localhost") {
+    baseUrl = "http://sz.test.ztosys.com";
+} else {
+    baseUrl = window.location.protocol + hostName
+}
 axios.defaults.headers.post['Content-Type'] =
-  'application/x-www-form-urlencoded'
+    'application/x-www-form-urlencoded'
 axios.defaults.withCredentials = true
-const xTag = '' 
-// 网关模式需要
-const { interception301,HostName, getHeader,dateConversion  } = window.$$global
+
 // //返回状
 // 创建axios实例
 const service = axios.create({
@@ -33,9 +30,9 @@ service.interceptors.response.use(
         // }
 
         if (response.data.statusCode == '301' || response.data.code == '301') {
-            interception301(response.data.message)
+            console.log(response.data.message)
             return
-          }
+        }
         return response
     },
     (error) => {
@@ -43,16 +40,11 @@ service.interceptors.response.use(
     })
 
 service.interceptors.request.use(config => {
-    const {url,headers,data} = config
-    const header = getHeader(url,xTag)
+    const {url,data} = config
     config = {
         ...config,
-        url: HostName + url,
-        data:dateConversion(qs.parse(data)),
-        headers:{
-            ...headers,
-            ...header
-        }
+        url: baseUrl + url,
+        data:data
     }
     return config
 }, error => {

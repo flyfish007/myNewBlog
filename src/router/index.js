@@ -8,7 +8,13 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
       component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
-  }
+  },
+      {
+          path: '/',
+          name: 'dashboard',
+          component: () => import(/* webpackChunkName: "about" */ '../views/dashboard.vue')
+      },
+
 ]
 
 const router = new VueRouter({

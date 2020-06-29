@@ -19,7 +19,7 @@
 
 
 <script>
-
+    import {mapGetters, mapMutations} from "vuex"
     export default {
         name: "tabItem",
         data() {
@@ -38,9 +38,10 @@
 
         },
         computed: {
-
+            ...mapGetters(['tabsObj'])
         },
         methods: {
+            ...mapMutations(['setTabsObj']),
             goCurrentTab(idx){
 
             },

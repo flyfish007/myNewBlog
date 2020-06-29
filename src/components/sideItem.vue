@@ -8,22 +8,14 @@
                   :keyName="menuOne.key" :key="menuOne.key+''">
                     <template slot="title">
                         <i class="el-icon-minus"></i>
-                        <i v-else
-                           :class="{
-                            'el-icon-plus': !(menuOne.key == isChoose),
-                            'el-icon-minus': menuOne.key == isChoose,
-                            }"
-                        ></i>
                         <span v-text="menuOne.name" slot="title"></span>
                     </template>
                     <template v-for="(twoMenu, index) in menuOne.subMenus">
                         <el-menu-item
-                                :style="{color: twoMenu.important ? '#d63434 !important' : '#a7b4c3'}"
                                 :index="twoMenu.key+''"
                                 :ref="twoMenu.key"
                                 :key="index">
-                            {{ twoMenu.important ? '※'+twoMenu.title : twoMenu.title}}
-                            <img v-if="twoMenu.icon == 'new'" src="@/assets/images/new.gif" width="30px" style="margin-left:4px;"/>
+                            {{ twoMenu.title}}
                         </el-menu-item>
                     </template>
                 </el-submenu>
@@ -38,12 +30,12 @@
 
 
 <script>
-
+import menus from '../router/menus'
     export default {
         name: "sideItem",
         data() {
             return {
-
+                menus:menus
             };
         },
         created() {
@@ -72,6 +64,9 @@
             },
             isclose(val) {
                 this.$store.commit('setChoose', 0);
+            },
+            excuteRouter(key) {
+
             }
 
         },
