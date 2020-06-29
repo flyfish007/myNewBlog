@@ -1,10 +1,39 @@
 <template>
   <div id="app">
-    hello..
-    <router-view/>
+      <div id="app">
+          <head-item></head-item>
+          <side-item></side-item>
+          <div class="ZTOmain" id="ZTOmain" :style="{left:isCollapse?'64px':''}">
+              <div class="ZTOmainInner">
+                  <tabs-item></tabs-item>
+                  <router-view/>
+              </div>
+          </div>
+      </div>
   </div>
 </template>
+<script>
+    import headItem from "./components/headItem.vue";
+    import sideItem from "./components/sideItem.vue";
+    import tabsItem from "./components/tabsItem.vue";
+    export default {
+        name: 'App',
+        data() {
+            return {};
+        },
+        mounted() {
 
+        },
+        computed: {
+
+        },
+        components: {headItem, sideItem, tabsItem},
+        methods: {
+
+        },
+
+    }
+</script>
 <style lang="scss">
-
+    @import "assets/css/common.scss";
 </style>
