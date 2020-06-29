@@ -6,13 +6,13 @@ Vue.use(VueRouter)
   const routes = [
   {
     path: '/',
-    name: 'Home',
-      component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
+    name: 'dashboard',
+      component: () => import(/* webpackChunkName: "about" */ '../views/dashboard.vue')
   },
       {
-          path: '/',
-          name: 'dashboard',
-          component: () => import(/* webpackChunkName: "about" */ '../views/dashboard.vue')
+          path: '/Home',
+          name: '业务员未签收预警',
+          component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
       },
 
 ]

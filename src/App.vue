@@ -1,13 +1,11 @@
 <template>
   <div id="app">
-      <div id="app">
-          <head-item></head-item>
-          <side-item></side-item>
-          <div class="ZTOmain" id="ZTOmain" :style="{left:isCollapse?'64px':''}">
-              <div class="ZTOmainInner">
-                  <tabs-item></tabs-item>
-                  <router-view/>
-              </div>
+      <head-item></head-item>
+      <side-item></side-item>
+      <div class="ZTOmain" id="ZTOmain" :style="{left:isCollapse?'64px':''}">
+          <div class="ZTOmainInner">
+              <tabs-item></tabs-item>
+              <router-view/>
           </div>
       </div>
   </div>
