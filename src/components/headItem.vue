@@ -39,5 +39,8 @@
 
 
 <style lang="scss">
-
+    .zto-head{
+        height: 50px;
+        background: #d7d7d7;
+    }
 </style>

@@ -1,17 +1,88 @@
 <template>
   <div class="home">
-    home..
+      <div class="cartWrap">
+         <div class="cart" ref="receiveBar"> </div>
+      </div>
   </div>
 </template>
 
 <script>
     import 'echarts/lib/chart/pie'
     import {cloneDeep} from 'lodash';
+    import moment from 'moment';
+    // 引入 ECharts 主模块
+    import echarts from 'echarts'
 export default {
   name: 'Home',
   components: {
 
   },
+    data() {
+        return {
+            receiveBar:null,
+            dateArr:[],
+            barInitData:[],
+            cartOptins:{
+                tooltip : {
+                    trigger: 'axis',
+                    triggerOn:"click"
+                },
+                cartGrid:{
+                    left:0,
+                    right:0,
+                    bottom:35,
+                    top:30,
+                    containLabel: true
+                },
+                cartLegend:{
+                    bottom:0,
+                    icon: "rect",
+                    itemWidth: 20,
+                    itemHeight: 10,
+                    itemGap: 30
+                },
+                xAxis: {
+                    type: 'category',
+                    axisLabel: {    //底部文字倾斜
+//                            interval: 0,
+//                            rotate:-25,
+                        color:'#999',
+                        fontSize:10
+                    },
+                    axisTick: {
+                        alignWithLabel: true
+                    },
+                    axisLine:{
+                        lineStyle:{
+                            color:"#999"
+                        }
+                    },
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {    //底部文字倾斜
+                        color:'#999',
+                        fontSize:10
+                    },
+                    nameTextStyle:{
+                        color:'#999',
+                        fontSize:10,
+                        align: "left"
+                    },
+                    splitLine:{
+                        lineStyle:{
+                            color:"#ccc"
+                        }
+                    },
+                    axisLine:{
+                        lineStyle:{
+                            color:"#999"
+                        }
+                    },
+                },
+            },
+        }
+    },
     mounted() {
         this.init();
     },
@@ -68,3 +139,20 @@ export default {
     }
 }
 </script>
+<style lang="scss">
+    .cartWrap{
+        padding:15px 0;
+        background: #fff;
+        height: 275px;
+        .cart {
+            width:100vw;
+            padding:0 12px;
+            height: 220px;
+            & > div:first-child ,&>div canvas{
+                width: 100% !important;
+                height: 220px !important;
+            }
+
+        }
+    }
+</style>

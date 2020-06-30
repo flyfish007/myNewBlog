@@ -1,6 +1,6 @@
 <template>
     <div class="menulist">
-        <el-menu class="el-menu-vertical-demo"  @select="excuteRouter"
+        <el-menu class="el-menu-vertical-demo" :default-active="menusActiveIdx"  @select="excuteRouter"
                  :collapse="isCollapse" :unique-opened="true" ref="elMenus" @open="isopen" @close="isclose">
             <template v-for="menuOne in menus">
                 <el-submenu
@@ -31,6 +31,8 @@
 
 <script>
 import menus from '../router/menus'
+import {mapGetters, mapMutations, mapState} from "vuex"
+import {cloneDeep} from 'lodash';
     export default {
         name: "sideItem",
         data() {
@@ -49,6 +51,8 @@ import menus from '../router/menus'
         },
         watch: {},
         computed: {
+            ...mapGetters(['tabsObj', 'isChoose']),
+            ...mapState(['storeIsCollapse', 'storeMenusActiveIdx']),
             isCollapse: {
                 get() {
                     return this.$store.state.menus.storeIsCollapse;
@@ -56,9 +60,18 @@ import menus from '../router/menus'
                 set(val) {
                     this.$store.state.menus.storeIsCollapse = val
                 }
+            },
+            menusActiveIdx: {
+                get() {
+                    return this.$store.state.menus.storeMenusActiveIdx;
+                },
+                set(val) {
+                    this.$store.state.menus.storeMenusActiveIdx = val
+                }
             }
         },
         methods: {
+            ...mapMutations(['setTabsObj', 'setIsCollapse', 'setChoose','setMenusActiveIdx']),
             isopen(val) {
                 this.$store.commit('setChoose', val);
             },
@@ -66,7 +79,43 @@ import menus from '../router/menus'
                 this.$store.commit('setChoose', 0);
             },
             excuteRouter(key) {
+                console.log('excuteRouter...')
+                var arry = key.split('-');
+                var first = arry[0] - 1,
+                    second = arry[1] - 1;
+                var curentTab = this.menus[first].subMenus[second];
 
+                this.$router.push({
+                    path: curentTab.path,
+                });
+
+                //添加tabObj
+                this.addTabObj(curentTab);
+
+            },
+            addTabObj(jumpTab){
+                let maxTabLen = 5;
+                let tempTabsObj = cloneDeep(this.tabsObj);
+                let len = tempTabsObj.list.length;
+                if (JSON.stringify(this.tabsObj).indexOf(JSON.stringify(jumpTab)) < 0) {
+                    if (tempTabsObj.list.length >= maxTabLen) {
+                        if(zParam.isFinance){
+                            tempTabsObj.list.splice(0, 1);
+                        }else{
+                            tempTabsObj.list.splice(1, 1);
+                        }
+                    }
+                    tempTabsObj.list.push(jumpTab);
+                    tempTabsObj.activeIdx = tempTabsObj.list.length - 1;
+                    this.setTabsObj(Object.assign(this.tabsObj,tempTabsObj))
+                } else {
+                    let list=tempTabsObj.list;
+                    for (let i = 0; i < len; i++) {
+                        if (list[i].path == jumpTab.path&&list[i].platform==jumpTab.platform) {
+                            this.setTabsObj(Object.assign(this.tabsObj,{"activeIdx":i}))
+                        }
+                    }
+                }
             }
 
         },
@@ -87,8 +136,8 @@ import menus from '../router/menus'
 
     .menulist {
         position: absolute;
-        padding-top: 50px;
-        height: 100%;
+        top:50px;
+        bottom: 0;
         overflow: hidden;
         z-index: 10;
         box-sizing: border-box;

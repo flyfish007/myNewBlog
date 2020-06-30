@@ -21,7 +21,7 @@
             return {};
         },
         mounted() {
-
+            this.$router.push({path: '/dashboard'});
         },
         computed: {
             ...mapGetters(["isCollapse"]),
@@ -35,4 +35,13 @@
 </script>
 <style>
     @import "assets/css/common.css";
+</style>
+<style lang="scss">
+    .ZTOmain{
+       position: absolute;
+       top:50px;
+        left: 180px;
+        padding:50px 10px 10px;
+
+    }
 </style>

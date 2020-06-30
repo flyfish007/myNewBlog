@@ -4,12 +4,15 @@
  */
 let menus=[
     {
-        name: '签收管控',
+        name: '一级菜单',
         subMenus: [
             {
-                title: '业务员未签收预警',
-                path: "/noSignWarnSalesman",
-                platform:"kpi"
+                title: '首页',
+                path: "/dashboard"
+            },
+            {
+                title: '二级菜单',
+                path: "/home"
             }
         ],
     },

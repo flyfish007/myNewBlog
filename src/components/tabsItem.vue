@@ -4,13 +4,8 @@
             <div class="tabMenu" :class="{'active':tabsObj.activeIdx==index}" v-for="(item,index) in tabsObj.list"
                  @click="goCurrentTab(index)" :key="item.mark">
                 <span>{{item.title}}</span>
-                <template v-if="!z_param.isFinance">
-                    <i v-show="index==0" class="place"> </i>
+                <template>
                     <i v-show="index!=0" class="close-button el-icon-circle-close" @click.stop="delTab(index)"></i>
-                </template>
-                <template v-else>
-                    <i v-show="tabsObj.list.length==1" class="place"> </i>
-                    <i v-show="tabsObj.list.length!=1" class="close-button el-icon-circle-close" @click.stop="delTab(index)"></i>
                 </template>
             </div>
         </template>
@@ -41,13 +36,37 @@
             ...mapGetters(['tabsObj'])
         },
         methods: {
-            ...mapMutations(['setTabsObj']),
-            goCurrentTab(idx){
+            ...mapMutations(['setTabsObj','setMenusActiveIdx']),
+            delTab(idx) {
+                // console.log("idx===>" + idx);
+                let tempList = this.tabsObj.list;
+                tempList.splice(idx, 1);
+                let tabsTemp = Object.assign(this.tabsObj, {list: tempList})
+                this.setTabsObj(tabsTemp);
+                //删除，到前一页
+                let goTab=tempList[idx-1];
+
+                this.$router.push({
+                    path: goTab.path,
+                });
+            },
+            goCurrentTab(idx) {
+                let tabName = this.tabsObj.list[idx].tabName;
+                //切换tab状态
+                let tabsTemp = Object.assign(this.tabsObj, {activeIdx: idx});
+                this.setTabsObj(tabsTemp);
+
+                //切换当前平台对应的iframe  && 跳转刷新对应iframe
+
+                this.$router.push({
+                    path: tabsTemp.path,
+                });
+
+                //更新manueSlide 的值与当前manue active的位置
+
+                this.setMenusActiveIdx(this.tabsObj.list[idx].key);
 
             },
-            delTab(idx){
-
-            }
 
 
         }
@@ -57,22 +76,23 @@
 <style lang="scss">
     .history-buttons {
         position: absolute;
-        top:0;
-        left: 0;
-        right: 0;
+        top:5px;
+        left: 5px;
+        right: 5px;
         display: -webkit-flex;
         display: flex;
         justify-content: flex-start;
         align-items: center;
         margin-bottom: 5px;
         .tabMenu {
-            display: inline-block;
+           display: flex;
+            align-items: center;
             margin-left: 10px;
             height: 30px;
             line-height: 30px;
             background: #d5eeff;
             color: #418fd8;
-            border-radius:30px;
+            border-radius:5px;
             &:first-child {
                 margin-left: 0;
             }
@@ -81,8 +101,9 @@
                 height: 30px;
                 line-height: 30px;
                 padding-left: 10px;
-                padding-right: 5px;
-                cursor: default
+                padding-right: 10px;
+                cursor: default;
+                white-space: nowrap;
             }
             &:hover {
                 background: #d5eeff;

@@ -1,7 +1,7 @@
 let state = {
     storeTabObj: {
         activeIdx: 0,
-        list: []
+        list: [{"title": "首页", "path": "/dashboard", "key": "1-1"}]
     }
 };
 let getters = {

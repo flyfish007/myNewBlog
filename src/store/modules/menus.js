@@ -1,6 +1,7 @@
 let state = {
     storeIsCollapse: false,
-    isChoose: 1
+    isChoose: 1,
+    storeMenusActiveIdx: "1-1",
 };
 let getters = {
     isCollapse(state) {
@@ -13,6 +14,9 @@ let getters = {
 let mutations = {
     setChoose(state, num) {
         state.isChoose = num;
-    }
+    },
+    menusActiveIdx(state) {
+        return state.storeMenusActiveIdx;
+    },
 };
 export default {state, getters, mutations};
