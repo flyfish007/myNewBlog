@@ -51,7 +51,6 @@
                 });
             },
             goCurrentTab(idx) {
-                let tabName = this.tabsObj.list[idx].tabName;
                 //切换tab状态
                 let tabsTemp = Object.assign(this.tabsObj, {activeIdx: idx});
                 this.setTabsObj(tabsTemp);
@@ -59,7 +58,7 @@
                 //切换当前平台对应的iframe  && 跳转刷新对应iframe
 
                 this.$router.push({
-                    path: tabsTemp.path,
+                    path: this.tabsObj.list[idx].path,
                 });
 
                 //更新manueSlide 的值与当前manue active的位置

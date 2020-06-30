@@ -192,6 +192,9 @@ import {cloneDeep} from 'lodash';
         text-align: center;
         padding-top: 6px;
     }
+    .menulist .el-submenu li.is-active{
+        color:#118de4!important;
+    }
 
     .menulist .el-radio-button:first-child .el-radio-button__inner {
         border-color: transparent;

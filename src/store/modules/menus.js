@@ -10,13 +10,17 @@ let getters = {
     isChoose(state) {
         return state.isChoose;
     },
+    menusActiveIdx(state) {
+        return state.storeMenusActiveIdx;
+    },
 };
 let mutations = {
     setChoose(state, num) {
         state.isChoose = num;
     },
-    menusActiveIdx(state) {
-        return state.storeMenusActiveIdx;
+    setMenusActiveIdx(state, obj) {
+        state.storeMenusActiveIdx = obj;
     },
+
 };
 export default {state, getters, mutations};
