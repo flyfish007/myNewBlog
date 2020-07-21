@@ -1,0 +1,165 @@
+// dialog
+.el-table{
+  font-size: 12px;
+}
+.el-range-editor--small{
+  .el-range-input,.el-range-separator{
+    font-size: 12px;
+  }
+}
+.el-dialog__wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .el-dialog {
+    background: #EAF1F9;
+    margin-top: 0!important;
+    margin-bottom: 0;
+    .el-dialog__headerbtn{
+      top: 11px;
+    }
+    .el-dialog__header, .el-dialog__footer {
+      height: 45px;
+      padding: 0 !important;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .el-dialog__footer {
+      height: 50px !important;
+    }
+
+    .el-dialog__body {
+      background: #d6e0eb;
+      padding: 10px;
+
+      .right {
+        display: flex;
+        flex-direction: column;
+        height: 459px;
+        width: 360px;
+
+        .el-input {
+          margin-bottom: 20px;
+        }
+
+        .el-table {
+          td, th {
+            padding: 6px 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// input
+
+.el-date-editor.el-input {
+  .el-input__inner {
+    padding:0 5px 0 30px;
+  }
+}
+.el-input {
+  .el-input__inner {
+    padding:0 5px;
+  }
+  /*.el-input__icon {
+    line-height: 30px;
+  }*/
+}
+
+.el-input-group--append {
+  display: flex;
+
+  .el-input-group__append {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+
+    .el-button {
+      margin: 0;
+      padding: 10px;
+    }
+  }
+}
+
+// button
+.el-button--default {
+  background: #eee;
+}
+.el-select-dropdown__item{
+  padding: 0 8px;
+}
+
+// form
+.el-form {
+  .el-form-item {
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 20px;
+
+    .el-form-item__label {
+      line-height: 30px;
+    }
+
+    .el-form-item__content {
+      height: 30px;
+      line-height: 30px;
+    }
+
+    .el-select {
+      width: 100%;
+    }
+  }
+}
+
+// tabs
+.el-tabs--card>.el-tabs__header .el-tabs__item.is-active { background: #409eff; color: white; }
+.el-tabs--border-card>.el-tabs__content {padding: 0!important;}
+.el-tabs--border-card{box-shadow:none!important;}
+.el-tabs--border-card{min-height: 100%;}
+
+.el-radio__label {
+  font-size: 12px;
+  padding-left: 8px;
+}
+
+.el-checkbox__label {
+  padding-left: 8px;
+  font-size: 12px;
+}
+
+.el-date-editor{
+  .el-range-separator {
+    padding: 0;
+  }
+}
+
+.el-message{
+  top: 50%;
+  margin-top: -24px;
+}
+
+.el-textarea__inner {
+  height: 100%!important;
+  color: #333;
+  border-radius: 0!important;
+  padding: 5px 3px!important;
+  line-height: 1.2!important;
+}
+
+.max-index{
+  z-index: 9999!important;
+}
+
+.el-button--small, .el-button--small.is-round {
+  padding: 8px 15px!important;
+}

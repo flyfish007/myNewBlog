@@ -34,13 +34,15 @@
     }
 </script>
 <style>
-    @import "assets/css/common.css";
+@import "assets/css/common.css";
 </style>
 <style lang="scss">
     .ZTOmain{
        position: absolute;
        top:50px;
         left: 180px;
+        right: 0;
+        bottom:0;
         padding:50px 10px 10px;
 
     }

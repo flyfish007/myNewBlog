@@ -48,3 +48,30 @@ body,
 li {
   list-style: none;
 }
+.tableWrap{
+    width:100%;
+    margin-top:20px;
+}
+
+.el-table thead th{
+  background: #f5f7fa;
+}
+
+.sz-search-box {
+    position: relative;
+    padding-right: 100px;
+}
+.sz-search-box>li{
+    display: flex;
+    align-items: center;
+}
+.sz-search-box>li label{
+    margin-right: 5px;
+}
+.sz-search-box>li:last-child {
+     position: absolute;
+     right: 0;
+     top: 50%;
+     margin-top: -16px;
+     margin-right: 0;
+ }
