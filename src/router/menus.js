@@ -5,6 +5,20 @@
 let menus=[
     {
         name: '一级菜单',
+        icon:'&#xeb99;',
+        subMenus: [
+            {
+                title: '首页',
+                path: "/dashboard"
+            },
+            {
+                title: '二级菜单',
+                path: "/home"
+            }
+        ],
+    },
+    {
+        name: '一级菜单',
         subMenus: [
             {
                 title: '首页',

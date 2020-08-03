@@ -7,7 +7,7 @@
                   :index="menuOne.key+''"
                   :keyName="menuOne.key" :key="menuOne.key+''">
                     <template slot="title">
-                        <i class="el-icon-minus"></i>
+                        <i class="iconfont" v-html="!!menuOne.icon?menuOne.icon:'&#xec06;'"></i>
                         <span v-text="menuOne.name" slot="title"></span>
                     </template>
                     <template v-for="(twoMenu, index) in menuOne.subMenus">
@@ -161,12 +161,12 @@ import {cloneDeep} from 'lodash';
     .menulist .el-submenu__title {
         height: 45px;
         line-height: 45px;
+        padding-left: 10px!important;
         color: #a7b4c3 !important;
-        padding-left: 0px !important;
     }
 
     .menulist .el-submenu li {
-        padding-left: 33px !important;
+        padding-left: 30px !important;
         color: #a7b4c3 !important;
     }
 
@@ -227,5 +227,14 @@ import {cloneDeep} from 'lodash';
         height: 40px;
         width: 99%;
         background: #1d2531
+    }
+    .el-submenu__title i{
+        margin-right: 5px;
+    }
+    .el-submenu__title>span{
+        font-weight: bold;
+    }
+    .el-submenu .el-menu-item{
+        min-width: auto !important;
     }
 </style>

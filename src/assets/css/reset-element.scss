@@ -98,7 +98,13 @@
 .el-select-dropdown__item{
   padding: 0 8px;
 }
-
+.el-button--primary{
+  background-color: #006c69;
+  border-color:#006c69;
+}
+.el-pagination.is-background .el-pager li:not(.disabled).active{
+  background-color: #006c69;
+}
 // form
 .el-form {
   .el-form-item {
